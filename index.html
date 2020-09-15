@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript"
+    src="https://www.cornify.com/js/cornify.js"></script>
+  <style>
+    h1 {
+      color: blue;
+      text-align: center;
+      font-size: 4em;
+    }
+
+    p {
+      margin-left: 5%;
+      margin-top: 5%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Welcome to secret code finder</h1>
+  <p>- Type and try to guess the secret code.</p>
+  <script>
+    const h1 = document.querySelector('h1');
+    const p = document.querySelector('p');
+    const pressed = [];
+    const secretCode = 'luke';
+    window.addEventListener('keyup', (e) => {
+      console.log(e.key);
+      pressed.push(e.key);
+      pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+      if (pressed.join('').includes(secretCode)) {
+        h1.textContent = 'You win!!!!!'
+        p.textContent = '';
+        cornify_add();
+      }
+      console.log(pressed);
+    })
+
+
+  </script>
+</body>
+
+</html>
